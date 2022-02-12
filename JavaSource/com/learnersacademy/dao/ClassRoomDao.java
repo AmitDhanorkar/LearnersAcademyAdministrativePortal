@@ -33,11 +33,8 @@ public class ClassRoomDao {
 		Session session = null;
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
-			// start a transaction
 			transaction = session.beginTransaction();
-			// save the classRoom object
 			session.save(classRoom);
-			// commit transaction
 			transaction.commit();
 		} catch (Exception e) {
 			if (transaction != null) {
@@ -55,12 +52,8 @@ public class ClassRoomDao {
 		Transaction transaction = null;
 		List<ClassRoom> listOfClassRooms = null;
 		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-			// start a transaction
 			transaction = session.beginTransaction();
-			// get an classRoom object
 			listOfClassRooms = session.createQuery("from ClassRoom").getResultList();
-
-			// commit transaction
 			transaction.commit();
 		} catch (Exception e) {
 			if (transaction != null) {

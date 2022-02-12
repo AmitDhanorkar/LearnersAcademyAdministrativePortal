@@ -33,11 +33,8 @@ public class TeacherDao {
 		Session session = null;
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
-			// start a transaction
 			transaction = session.beginTransaction();
-			// save the classRoom object
 			session.save(teacher);
-			// commit transaction
 			transaction.commit();
 		} catch (Exception e) {
 			if (transaction != null) {
@@ -55,12 +52,8 @@ public class TeacherDao {
 		Transaction transaction = null;
 		List<Teacher> listOfTeachers = null;
 		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-			// start a transaction
 			transaction = session.beginTransaction();
-			// get an classRoom object
 			listOfTeachers = session.createQuery("from Teacher").getResultList();
-
-			// commit transaction
 			transaction.commit();
 		} catch (Exception e) {
 			if (transaction != null) {

@@ -33,11 +33,8 @@ public class SubjectDao {
 		Session session = null;
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
-			// start a transaction
 			transaction = session.beginTransaction();
-			// save the student object
 			session.save(subject);
-			// commit transaction
 			transaction.commit();
 		} catch (Exception e) {
 			if (transaction != null) {
@@ -55,12 +52,8 @@ public class SubjectDao {
 		Transaction transaction = null;
 		List<Subject> listOfSubjects = null;
 		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-			// start a transaction
 			transaction = session.beginTransaction();
-			// get an student object
 			listOfSubjects = session.createQuery("from Subject").getResultList();
-
-			// commit transaction
 			transaction.commit();
 		} catch (Exception e) {
 			if (transaction != null) {
@@ -77,11 +70,8 @@ public class SubjectDao {
 		Session session = null;
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
-			// start a transaction
 			transaction = session.beginTransaction();
-			// save the student object
 			session.update(subject);
-			// commit transaction
 			transaction.commit();
 		} catch (Exception e) {
 			if (transaction != null) {

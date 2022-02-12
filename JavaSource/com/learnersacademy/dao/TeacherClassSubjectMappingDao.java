@@ -16,11 +16,8 @@ public class TeacherClassSubjectMappingDao {
 		Session session = null;
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
-			// start a transaction
 			transaction = session.beginTransaction();
-			// save the student object
 			session.save(teacherClassSubjectMapping);
-			// commit transaction
 			transaction.commit();
 		} catch (Exception e) {
 			if (transaction != null) {
@@ -38,12 +35,8 @@ public class TeacherClassSubjectMappingDao {
 		Transaction transaction = null;
 		List<TeacherClassSubjectMapping> listOfTeacherClassSubjectMappings = null;
 		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-			// start a transaction
 			transaction = session.beginTransaction();
-			// get an student object
 			listOfTeacherClassSubjectMappings = session.createQuery("from TeacherClassSubjectMapping").getResultList();
-
-			// commit transaction
 			transaction.commit();
 		} catch (Exception e) {
 			if (transaction != null) {
